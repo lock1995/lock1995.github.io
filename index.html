@@ -288,7 +288,10 @@
 <h4 id="一个小坑－bind传递的是值，而不是实际变量的值"><a href="#一个小坑－bind传递的是值，而不是实际变量的值" class="headerlink" title="一个小坑－bind传递的是值，而不是实际变量的值"></a>一个小坑－bind传递的是值，而不是实际变量的值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>)</span>&#123;    </div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">4</span>;</div><div class="line"><span class="keyword">var</span> newFoo = add.bind(<span class="keyword">this</span>,a, b);</div><div class="line">a = <span class="number">6</span>;</div><div class="line">b = <span class="number">7</span>;</div><div class="line"><span class="built_in">console</span>.log(newFoo()); <span class="comment">//7</span></div></pre></td></tr></table></figure>
 <h4 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">ii</span>)</span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;            </div><div class="line">            <span class="built_in">console</span>.log(ii);</div><div class="line">        &#125;,<span class="number">1000</span>);</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="comment">//上面的代码用bind()来实现，更简洁了一些</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">consoleLog</span>(<span class="params">i</span>)</span>&#123;  </div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</div><div class="line">    setTimeout(consoleLog.bind(<span class="keyword">this</span>,i),<span class="number">1000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="实现简单的-Currying"><a href="#实现简单的-Currying" class="headerlink" title="实现简单的 Currying"></a>实现简单的 Currying</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a+b+c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> addAgain = add.bind(<span class="keyword">this</span>, <span class="number">1</span>, <span class="number">2</span>);</div><div class="line"><span class="keyword">var</span> result = addAgain(<span class="number">3</span>); <span class="comment">//6</span></div></pre></td></tr></table></figure>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><p><a href="http://www.codeceo.com/article/javascript-bind-clean-code.html?sukey=3997c0719f151520725308aa1f4a75bc3313d4536849d1d95661b9973ccac565c24071537bb2a226c87dcd97b1cd24be" target="_blank" rel="external">JavaScript中使用bind()方法让代码更干净</a></p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><!-- <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span> -->
           
         
       
@@ -442,7 +445,10 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">duration = 0</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>((resolve, reject) =&gt; &#123;</div><div class="line">        setTimeout(resolve, duration);</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = timeout(<span class="number">1000</span>).then(() =&gt; &#123;</div><div class="line">    <span class="keyword">return</span> timeout(<span class="number">2000</span>);</div><div class="line">&#125;).then(() =&gt; &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"hmm"</span>);</div><div class="line">&#125;).catch(err =&gt; &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([timeout(<span class="number">100</span>), timeout(<span class="number">200</span>)]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>想要了解promise实际应用等，<a href="http://liubin.org/promises-book/" target="_blank" rel="external">详见。</a></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>总之，ES6还是有很多棒棒的语法，有利于精简代码，高效开发；只不过一些低级别浏览器不支持，可以用Babel等工具把ES6转化成ES5，但是有些语法还是不够完善；但是在不久的将来，ES6一定会成为主流的。对了，还有ES7、8、9……</p>
-<h2 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h2><blockquote>
+<h2 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h2><p><a href="http://babeljs.cn/docs/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+<p><a href="https://github.com/metagrover/ES6-for-humans" target="_blank" rel="external">ES6-for-humans</a></p>
+<p><a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">es6features</a></p>
+<blockquote>
 <p>by Lock</p>
 <p>Feel free to repost but keep the link to this page please!</p>
 </blockquote>
@@ -718,6 +724,13 @@
           
 
           
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
 
         </nav>
 
@@ -776,7 +789,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2016</span>

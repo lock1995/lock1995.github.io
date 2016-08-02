@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JS," />
 
 
 
@@ -94,7 +94,7 @@
 <meta property="og:description" content="什么是bind（）？bind和call以及apply一样，都是可以改变上下文的this指向的。不同的是，call和apply一样，直接引用在方法上，而bind绑定this后返回一个方法，但内部核心还是apply。
 说白了就是，bind返回的是一个未执行的函数，需要自己去调用；apply和call返回的是函数执行完的结果。
 下面来看bind的基本用法：12345function add(a,b)&amp;#">
-<meta property="og:updated_time" content="2016-08-01T11:16:48.000Z">
+<meta property="og:updated_time" content="2016-08-02T02:29:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bind（）入门">
 <meta name="twitter:description" content="什么是bind（）？bind和call以及apply一样，都是可以改变上下文的this指向的。不同的是，call和apply一样，直接引用在方法上，而bind绑定this后返回一个方法，但内部核心还是apply。
@@ -288,7 +288,10 @@
 <h4 id="一个小坑－bind传递的是值，而不是实际变量的值"><a href="#一个小坑－bind传递的是值，而不是实际变量的值" class="headerlink" title="一个小坑－bind传递的是值，而不是实际变量的值"></a>一个小坑－bind传递的是值，而不是实际变量的值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>)</span>&#123;    </div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">4</span>;</div><div class="line"><span class="keyword">var</span> newFoo = add.bind(<span class="keyword">this</span>,a, b);</div><div class="line">a = <span class="number">6</span>;</div><div class="line">b = <span class="number">7</span>;</div><div class="line"><span class="built_in">console</span>.log(newFoo()); <span class="comment">//7</span></div></pre></td></tr></table></figure>
 <h4 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">ii</span>)</span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;            </div><div class="line">            <span class="built_in">console</span>.log(ii);</div><div class="line">        &#125;,<span class="number">1000</span>);</div><div class="line">    &#125;)(i);</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="comment">//上面的代码用bind()来实现，更简洁了一些</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">consoleLog</span>(<span class="params">i</span>)</span>&#123;  </div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</div><div class="line">    setTimeout(consoleLog.bind(<span class="keyword">this</span>,i),<span class="number">1000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="实现简单的-Currying"><a href="#实现简单的-Currying" class="headerlink" title="实现简单的 Currying"></a>实现简单的 Currying</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a+b+c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> addAgain = add.bind(<span class="keyword">this</span>, <span class="number">1</span>, <span class="number">2</span>);</div><div class="line"><span class="keyword">var</span> result = addAgain(<span class="number">3</span>); <span class="comment">//6</span></div></pre></td></tr></table></figure>
-<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2>
+<h5 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h5><p><a href="http://www.codeceo.com/article/javascript-bind-clean-code.html?sukey=3997c0719f151520725308aa1f4a75bc3313d4536849d1d95661b9973ccac565c24071537bb2a226c87dcd97b1cd24be" target="_blank" rel="external">JavaScript中使用bind()方法让代码更干净</a></p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><!-- <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span> -->
       
     </div>
 
@@ -307,6 +310,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag">#JS</a>
+          
+        </div>
       
 
       
@@ -395,6 +404,13 @@
           
 
           
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
 
         </nav>
 
@@ -464,7 +480,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2016</span>

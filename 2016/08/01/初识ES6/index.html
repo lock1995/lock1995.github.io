@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ES6," />
 
 
 
@@ -94,7 +94,7 @@
 <meta property="og:description" content="ES6简介ES6是JavaScript语言的新一代标准，加入了一些新的功能和语法，正式发布于2015年6月，亦称ES2015；该标准由ECMA（欧洲计算机制造联合会）的第39号技术专家委员会（TC39）制订，ES7正在制订中，据称会在2017年发布。
 语法箭头函数、thisES6中可以使用 =&amp;gt; 作为函数表达形式，极简风格，参数＋ =&amp;gt; ＋函数体。
 123var foo = funct">
-<meta property="og:updated_time" content="2016-08-01T06:04:15.000Z">
+<meta property="og:updated_time" content="2016-08-02T02:29:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识ES6">
 <meta name="twitter:description" content="ES6简介ES6是JavaScript语言的新一代标准，加入了一些新的功能和语法，正式发布于2015年6月，亦称ES2015；该标准由ECMA（欧洲计算机制造联合会）的第39号技术专家委员会（TC39）制订，ES7正在制订中，据称会在2017年发布。
@@ -343,7 +343,10 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">duration = 0</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>((resolve, reject) =&gt; &#123;</div><div class="line">        setTimeout(resolve, duration);</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = timeout(<span class="number">1000</span>).then(() =&gt; &#123;</div><div class="line">    <span class="keyword">return</span> timeout(<span class="number">2000</span>);</div><div class="line">&#125;).then(() =&gt; &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"hmm"</span>);</div><div class="line">&#125;).catch(err =&gt; &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([timeout(<span class="number">100</span>), timeout(<span class="number">200</span>)]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>想要了解promise实际应用等，<a href="http://liubin.org/promises-book/" target="_blank" rel="external">详见。</a></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>总之，ES6还是有很多棒棒的语法，有利于精简代码，高效开发；只不过一些低级别浏览器不支持，可以用Babel等工具把ES6转化成ES5，但是有些语法还是不够完善；但是在不久的将来，ES6一定会成为主流的。对了，还有ES7、8、9……</p>
-<h2 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h2><blockquote>
+<h2 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h2><p><a href="http://babeljs.cn/docs/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+<p><a href="https://github.com/metagrover/ES6-for-humans" target="_blank" rel="external">ES6-for-humans</a></p>
+<p><a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">es6features</a></p>
+<blockquote>
 <p>by Lock</p>
 <p>Feel free to repost but keep the link to this page please!</p>
 </blockquote>
@@ -366,6 +369,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
       
 
       
@@ -458,6 +467,13 @@
           
 
           
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
 
         </nav>
 
@@ -527,7 +543,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2016</span>
